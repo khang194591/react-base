@@ -1,29 +1,35 @@
-import ToggleLanguage from "@/app/components/ToggleLanguage";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Breadcrumb, Button, Layout, theme } from "antd";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import ToggleFullScreen from '@/app/components/ToggleFullScreen'
+import ToggleLanguage from '@/app/components/ToggleLanguage'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Breadcrumb, Button, Layout, theme } from 'antd'
+import { uniqBy } from 'lodash'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
+import AvatarMenu from './AvatarMenu'
 
 interface Props {
-  collapsed: boolean;
-  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  collapsed: boolean
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const mapPathname: Record<string, string> = {
-  "/": "quickMatching",
-  "/quick-matching": "quickMatching",
-  "/schedule-matching": "scheduleMatching",
-  "/matching-history": "matchingHistory",
-  "/chat": "chat",
-};
+  '/': 'home',
+  '/user': 'user',
+  '/attendance': 'attendance',
+}
 
 function Header({ collapsed, setCollapsed }: Props) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const {
     token: { colorBgContainer },
-  } = theme.useToken();
-  const { pathname } = useLocation();
+  } = theme.useToken()
+  const { pathname } = useLocation()
+
+  const items = [
+    { title: t('common.module.label.home'), path: '' },
+    { title: t(`common.module.label.${mapPathname[pathname]}`) },
+  ]
 
   return (
     <Layout.Header
@@ -36,20 +42,15 @@ function Header({ collapsed, setCollapsed }: Props) {
         onClick={() => setCollapsed(!collapsed)}
         className="flex items-center justify-center p-4"
       />
-      <Breadcrumb
-        className="hidden md:block ml-4"
-        items={[
-          { title: t("common.title.home") },
-          { title: t(`common.title.${mapPathname[pathname]}`) },
-        ]}
-      />
+      <Breadcrumb className="hidden md:block ml-4" items={uniqBy(items, 'title')} />
       <span className="flex-1" />
       <div className="inline-flex gap-2">
+        <ToggleFullScreen />
         <ToggleLanguage />
+        <AvatarMenu />
       </div>
-      s{" "}
     </Layout.Header>
-  );
+  )
 }
 
-export default Header;
+export default Header

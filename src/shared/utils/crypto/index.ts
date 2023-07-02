@@ -1,8 +1,8 @@
 import CryptoJS from "crypto-js";
 
-const CryptoSecret = "__G_N_A_N_K__";
+const CryptoSecret = import.meta.env.VITE_APP_CRYPTO_SECRET;
 
-export function encrypt(data: any) {
+export function encrypt(data: unknown) {
   const newData = JSON.stringify(data);
   return CryptoJS.AES.encrypt(newData, CryptoSecret).toString();
 }

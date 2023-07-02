@@ -1,13 +1,23 @@
 import { decrypt, encrypt } from "../crypto";
 
+interface Local {
+  user: string;
+
+  token: string;
+  tokenExpiredAt: string;
+
+  refreshToken: string;
+  refreshTokenExpiredAt: string;
+
+  language: SupportLanguage;
+}
+
 interface StorageData<T> {
   value: T;
   expire: number | null;
 }
 
-function createLocalStorage<
-  T extends StorageInterface.Local = StorageInterface.Local
->() {
+function createLocalStorage<T extends Local = Local>() {
   /** The default cache period is 7 days */
   const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7;
 

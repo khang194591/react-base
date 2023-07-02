@@ -1,14 +1,15 @@
-import { localStg } from "@/utils/storage";
-import { create } from "zustand";
+import { initLanguage } from '@/shared/locales/utils'
+import { create } from 'zustand'
 
 type State = {
-  language: SupportLanguage;
-  toggleLanguage: (val: SupportLanguage) => void;
-};
+  language: SupportLanguage
+}
 
-const initLanguage: SupportLanguage = localStg.get("language");
+type Action = {
+  toggleLanguage: (val: SupportLanguage) => void
+}
 
-export const useCommonStore = create<State>((set) => ({
+export const useCommonStore = create<State & Action>((set) => ({
   language: initLanguage,
   toggleLanguage: (val: SupportLanguage) => set(() => ({ language: val })),
-}));
+}))

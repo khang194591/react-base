@@ -7,6 +7,7 @@ export const router = createBrowserRouter([
       const { default: AppLayout } = await import("@/app/layouts/AppLayout");
       return { Component: AppLayout };
     },
+    children: [],
   },
   {
     path: "/auth",

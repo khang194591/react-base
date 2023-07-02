@@ -1,83 +1,66 @@
-import { localStg } from "@/utils/storage";
-import { App, Button, Form, Input } from "antd";
-import axios from "axios";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from '@/app/store/auth'
+import { localStg } from '@/shared/utils/storage'
+import { App, Button, Form, Input } from 'antd'
+import axios from 'axios'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link, useNavigate } from 'react-router-dom'
 
 interface ISignInForm {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 function SignIn() {
-  const { t } = useTranslation();
-  const { notification } = App.useApp();
-  const navigate = useNavigate();
+  const { t } = useTranslation()
+  const { notification } = App.useApp()
+  const navigate = useNavigate()
+  const { fetchUserFromStg } = useAuthStore()
 
-  const [form] = Form.useForm<ISignInForm>();
+  const [form] = Form.useForm<ISignInForm>()
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const onSubmit = async (values: ISignInForm) => {
-    setLoading(true);
-    const response = await axios.post("/auth/sign-in", values);
-    console.log(response);
-
+    setLoading(true)
+    const response = await axios.post('/auth/sign-in', values)
     if (response.success) {
-      localStg.set("token", response.data.accessToken);
-      localStg.set("user", JSON.stringify(response.data.account.user));
-      navigate("/");
-      notification.success({ message: t("auth.message.signInSuccess") });
+      localStg.set('token', response.data.token)
+      localStg.set('tokenExpiredAt', response.data.tokenExpiredAt)
+      localStg.set('user', JSON.stringify(response.data.user))
+      fetchUserFromStg()
+      navigate('/')
+      notification.success({ message: t('auth.message.signInSuccess') })
     } else {
-      notification.error({ message: response.message || response.statusText });
+      notification.error({ message: response.message || response.statusText })
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <div className="flex flex-col md:min-w-[400px] items-center px-4 pt-2 gap-4">
-      <p className="text-4xl font-semibold">{t("auth.action.signIn")}</p>
-      <Form
-        form={form}
-        onFinish={onSubmit}
-        layout="vertical"
-        className="w-full"
-        requiredMark={false}
-      >
-        <Form.Item
-          label={t("auth.form.email.label")}
-          name="email"
-          rules={[{ required: true, type: "email" }]}
-        >
-          <Input placeholder={t("auth.form.email.placeholder")} />
+      <p className="text-4xl font-semibold">{t('auth.action.signIn')}</p>
+      <Form form={form} onFinish={onSubmit} layout="vertical" className="w-full" requiredMark={false}>
+        <Form.Item label={t('auth.form.email.label')} name="email" rules={[{ required: true, type: 'email' }]}>
+          <Input placeholder={t('auth.form.email.placeholder')} />
         </Form.Item>
-        <Form.Item
-          label={t("auth.form.password.label")}
-          name="password"
-          rules={[{ required: true, min: 6 }]}
-        >
-          <Input.Password placeholder={t("auth.form.password.placeholder")} />
+        <Form.Item label={t('auth.form.password.label')} name="password" rules={[{ required: true, min: 6 }]}>
+          <Input.Password placeholder={t('auth.form.password.placeholder')} />
         </Form.Item>
         <Form.Item>
-          <Button
-            htmlType="submit"
-            loading={loading}
-            type="primary"
-            className="w-full"
-          >
-            {t("auth.action.signIn")}
+          <Button htmlType="submit" loading={loading} type="primary" className="w-full">
+            {t('auth.action.signIn')}
           </Button>
         </Form.Item>
       </Form>
       <span className="text-sm flex gap-2">
-        <p>{t("auth.text.doNotHaveAccount")}</p>
-        <Link to={"/auth/sign-up"} className="!text-primary font-semibold">
-          {t("auth.text.createNewAccount")}
+        <p>{t('auth.text.doNotHaveAccount')}</p>
+        <Link to={'/auth/sign-up'} className="!text-primary font-semibold">
+          {t('auth.text.createNewAccount')}
         </Link>
       </span>
     </div>
-  );
+  )
 }
 
-export default SignIn;
+export default SignIn

@@ -1,26 +1,38 @@
-import { DashboardOutlined } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import React, { useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { DashboardOutlined, UserOutlined } from '@ant-design/icons'
+import { Layout, Menu } from 'antd'
+import React, { useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
-  collapsed: boolean;
-  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  collapsed: boolean
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const items = [
   {
-    key: "/",
-    label: "common.title.quickMatching",
+    key: '/',
+    label: 'common.module.label.home',
     icon: <DashboardOutlined />,
     children: null,
   },
-];
+  {
+    key: '/user',
+    label: 'common.module.label.user',
+    icon: <UserOutlined />,
+    children: null,
+  },
+  // {
+  //   key: '/attendance',
+  //   label: 'common.module.label',
+  //   icon: <ClockCircleOutlined />,
+  //   children: null,
+  // },
+]
 
 function Sider({ collapsed, setCollapsed }: Props) {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const siderItems = useCallback(
     () =>
       items.map((item) => ({
@@ -29,7 +41,7 @@ function Sider({ collapsed, setCollapsed }: Props) {
         onClick: () => navigate(item.key),
       })),
     [t, navigate]
-  );
+  )
 
   return (
     <Layout.Sider
@@ -50,7 +62,7 @@ function Sider({ collapsed, setCollapsed }: Props) {
         items={siderItems()}
       />
     </Layout.Sider>
-  );
+  )
 }
 
-export default Sider;
+export default Sider

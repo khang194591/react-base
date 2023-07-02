@@ -1,8 +1,10 @@
 import { decrypt, encrypt } from "../crypto";
 
-function createSessionStorage<
-  T extends StorageInterface.Session = StorageInterface.Session
->() {
+interface Session {
+  demoKey: string;
+}
+
+function createSessionStorage<T extends Session = Session>() {
   function set<K extends keyof T>(key: K, value: T[K]) {
     const json = encrypt(value);
     sessionStorage.setItem(key as string, json);

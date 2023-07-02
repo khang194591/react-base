@@ -1,0 +1,107 @@
+{
+  "status": {
+    "success": "Success",
+    "error": "Error",
+    "notification": "Notification"
+  },
+  "button": {
+    "ok": "OK",
+    "add": "Add",
+    "save": "Save",
+    "edit": "Edit",
+    "update": "Update",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "reset": "Reset",
+    "search": "Search",
+    "create": "Create",
+    "upload": "Upload",
+    "view": "View",
+    "submit": "Submit",
+    "action": "Action",
+    "export": "Export",
+    "import": "Import",
+    "filter": "Filter",
+    "showFilter": "Show filter",
+    "hideFilter": "Hide filter",
+    "goHome": "Go back home",
+    "fullScreen": "Full screen",
+    "exitFullScreen": "Exit full screen"
+  },
+  "module": {
+    "label": {
+      "403": "Forbidden",
+      "404": "Not found",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "forgotPassword": "Forgot Password",
+      "home": "Home",
+      "user": "User management",
+      "setting": "Setting",
+      "role": "Role Setting"
+    }
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "response": {
+    "createSuccess": "Create {field} successfully",
+    "updateSuccess": "Update {field} successfully",
+    "deleteSuccess": "Delete {field} successfully"
+  },
+  "timeRange": {
+    "separator": "To",
+    "start": "Start time",
+    "end": "End Time"
+  },
+  "error": {
+    "noData": "No data",
+    "forbiddenMessage": "You don't have permissions to access this page!"
+  },
+  "yup": {
+    "field": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "name": "name",
+      "email": "email",
+      "password": "password",
+      "avatarUrl": "avatar",
+      "phone": "phone",
+      "birthDay": "birthDay",
+      "gender": "gender",
+      "address": "address",
+      "bank": "bank",
+      "bankAccount": "bankAccount",
+      "citizenId": "citizen ID",
+      "status": "status",
+      "roleId": "role",
+      "province": "province",
+      "district": "district",
+      "ward": "ward"
+    },
+    "message": {
+      "mixed": {
+        "default": "{path} is invalid",
+        "required": "{path} is a required field",
+        "defined": "{path} must be defined",
+        "notNull": "{path} cannot be null",
+        "oneOf": "{path} must be one of the following values: {values}",
+        "notOneOf": "{path} must not be one of the following values: {values}"
+      },
+      "string": {
+        "length": "{path} must be exactly {length} characters",
+        "min": "{path} must be at least {min} characters",
+        "max": "{path} must be at most {max} characters",
+        "matches": "{path} must match the following: \"{regex}\"",
+        "email": "{path} must be a valid email",
+        "url": "{path} must be a valid URL",
+        "uuid": "{path} must be a valid UUID",
+        "trim": "{path} must be a trimmed string",
+        "lowercase": "{path} must be a lowercase string",
+        "uppercase": "{path} must be a upper case string"
+      }
+    }
+  }
+}

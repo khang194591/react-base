@@ -1,0 +1,107 @@
+{
+  "status": {
+    "success": "Thành công",
+    "error": "Xảy ra lỗi",
+    "notification": "Thông báo"
+  },
+  "button": {
+    "ok": "OK",
+    "add": "Thêm",
+    "save": "Lưu",
+    "edit": "Sửa",
+    "update": "Cập nhật",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "delete": "Xóa",
+    "reset": "Đặt lại",
+    "search": "Tìm kiếm",
+    "create": "Tạo",
+    "upload": "Tải lên",
+    "view": "Xem",
+    "submit": "Xác nhận",
+    "action": "Hành động",
+    "export": "Tải xuống",
+    "import": "Tải lên",
+    "filter": "Lọc",
+    "showFilter": "Hiển thị bộ lọc",
+    "hideFilter": "Ẩn bộ lọc",
+    "goHome": "Về trang chủ",
+    "fullScreen": "Toàn màn hình",
+    "exitFullScreen": "Thoát chế độ toàn màn hình"
+  },
+  "module": {
+    "label": {
+      "403": "Không có quyền",
+      "404": "Không tìm thấy",
+      "signIn": "Đăng nhập",
+      "signUp": "Đăng ký",
+      "forgotPassword": "Quên mật khẩu",
+      "home": "Trang chủ",
+      "user": "Quản lý người dùng",
+      "setting": "Cài đặt",
+      "role": "Cài đặt vai trò"
+    }
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "response": {
+    "createSuccess": "Thêm {field} thành công",
+    "updateSuccess": "Cập nhật {field} thành công",
+    "deleteSuccess": "Xóa {field} thành công"
+  },
+  "timeRange": {
+    "separator": "Đến",
+    "start": "Bắt đầu",
+    "end": "Kết thúc"
+  },
+  "error": {
+    "noData": "Không có dữ liệu",
+    "forbiddenMessage": "Bạn không có quyền truy cập vào trang này!"
+  },
+  "yup": {
+    "field": {
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "name": "họ tên",
+      "email": "địa chỉ mail",
+      "password": "mật khẩu",
+      "avatarUrl": "ảnh đại diện",
+      "phone": "số điện thoại",
+      "birthDay": "ngày sinh",
+      "gender": "giới tính",
+      "address": "địa chỉ",
+      "bank": "ngân hàng",
+      "bankAccount": "số tài khoản ngân hàng",
+      "citizenId": "số CCCD/CMND",
+      "status": "trạng thái",
+      "roleId": "vai trò",
+      "province": "tỉnh",
+      "district": "huyện",
+      "ward": "xã"
+    },
+    "message": {
+      "mixed": {
+        "default": "{path} không hợp lệ",
+        "required": "{path} là trường bắt buộc",
+        "defined": "{path} là trường bắt buộc",
+        "notNull": "{path} là trường bắt buộc",
+        "oneOf": "{path} phải nhận một trong những giá trị sau: {values}",
+        "notOneOf": "{path} không được nhận một trong những giá trị sau: {values}"
+      },
+      "string": {
+        "length": "{path} phải dài chính xác {length} ký tự",
+        "min": "{path} phải gồm ít nhất {min} ký tự",
+        "max": "{path} phải gồm nhiều nhất {max} ký tự",
+        "matches": "{path} phải khớp mẫu sau: \"{regex}\"",
+        "email": "{path} phải là địa chỉ mail hợp lệ",
+        "url": "{path} phải là địa chỉ URL hợp lệ",
+        "uuid": "{path} phải là UUID hợp lệ",
+        "trim": "{path} phải chuỗi đã được thu gọn",
+        "lowercase": "{path} phải là chuỗi viết thường",
+        "uppercase": "{path} phải là chuỗi viết hoa"
+      }
+    }
+  }
+}
